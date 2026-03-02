@@ -17,7 +17,12 @@ password = input("Please enter your password: ")
 
 # 2026-03-02 20:20 --- neovim
 
-attempts = 3
+if age >= 70:
+    attempts = 5
+else:
+    attempts = 3
+
+# attempts = 3 old
 
 for i in range(attempts):
     if password == "panda11" or password == "hotdog32": 
