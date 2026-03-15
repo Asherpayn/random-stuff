@@ -8,6 +8,10 @@ from bs4 import BeautifulSoup
 url = "https://en.wikipedia.org/wiki/Anna's_Archive"
 # using my normal user agent for Zen Browser (Firefox based) to get around error 403: forbidden
 headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:148.0) Gecko/20100101 Firefox/148.0'}
+welcome = """
+This is a program that finds the links to Anna's Archive using the wikipedia article.
+If you get an unknown http error refer to https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status
+"""
 
 def parse(content):
 	# Pimp up the raw HTML string with beautifulsoup
@@ -35,6 +39,7 @@ def find_links(soup):
 	return result
 
 def main():
+	print(welcome)
 	response = requests.get(url, headers=headers)
 
 	# Handles common HTTP status codes
