@@ -1,5 +1,6 @@
 # the correct path is right, left, left, right
 #TODO add comments
+#TODO FIX
 success = 0
 
 def choice1():
