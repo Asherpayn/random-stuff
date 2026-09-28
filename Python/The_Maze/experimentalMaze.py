@@ -1,6 +1,9 @@
 # the correct path is right, left, left, right
 # Function with the logic for each junction in the maze
+import random as rand
+import subprocess
 import sys
+import time as t
 
 
 def junction(rightChoice: str, wrongChoice: str) -> bool:
@@ -10,6 +13,8 @@ def junction(rightChoice: str, wrongChoice: str) -> bool:
         .lower()
         .strip()
     )
+
+    t.sleep(rand.randint(0, 3))
     if choice == rightChoice:
         print("You have avoided a brutal death, well done!")
         success = True
@@ -22,24 +27,26 @@ def junction(rightChoice: str, wrongChoice: str) -> bool:
     return success
 
 
+def clear():
+    _ = subprocess.run("cls||clear", check=False)
+
+
 def main():
     print("Welcome to the maze!")
 
-    if junction("r", "l"):
-        print("Moving on...")
-    else:
+    if not junction("r", "l"):
         sys.exit()
-    if junction("l", "r"):
-        print("Moving on...")
-    else:
+    clear()
+    if not junction("l", "r"):
         sys.exit()
-    if junction("l", "r"):
-        print("Moving on...")
-    else:
+    clear()
+    if not junction("l", "r"):
         sys.exit()
-    if junction("r", "l"):
-        print("Moving on...")
-    else:
+    clear()
+    if not junction("l", "r"):
+        sys.exit()
+    clear()
+    if not junction("l", "r"):
         sys.exit()
 
 
