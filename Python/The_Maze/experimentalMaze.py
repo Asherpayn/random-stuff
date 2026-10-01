@@ -28,7 +28,7 @@ def junction(rightChoice: str, wrongChoice: str) -> bool:
 
 
 def clear():
-    _ = subprocess.run("cls||clear", check=False)
+    _ = subprocess.run("cls||clear", check=False, shell=True)
 
 
 def main():
