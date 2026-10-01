@@ -5,26 +5,34 @@ import subprocess
 import sys
 import time as t
 
+lives = 3
+
 
 def junction(rightChoice: str, wrongChoice: str) -> bool:
 
-    choice = (
-        input("You have reached a junction in the maze, go right (R) or left (L)?")
-        .lower()
-        .strip()
-    )
+    global lives
 
     t.sleep(rand.randint(0, 3))
-    if choice == rightChoice:
-        print("You have avoided a brutal death, well done!")
-        success = True
-    elif choice == wrongChoice:
-        print("You have walked down the wrong way and got lost. Try again.")
-        success = False
-    else:
-        print("Invalid input, failing choice.")
-        success = False
-    return success
+
+    while lives > 0:
+        choice = (
+            input("You have reached a junction in the maze, go right (R) or left (L)?")
+            .lower()
+            .strip()
+        )
+
+        if choice == rightChoice:
+            print("You have avoided a brutal death, well done!")
+            success = True
+            return success
+        elif choice == wrongChoice:
+            print("You have walked down the wrong way and got lost. Try again.")
+            success = False
+            lives -= 1
+        else:
+            print("Invalid input, failing choice.")
+            success = False
+        break
 
 
 def clear():
@@ -32,22 +40,31 @@ def clear():
 
 
 def main():
+
+	clear()
+
     print("Welcome to the maze!")
 
-    if not junction("r", "l"):
-        sys.exit()
-    clear()
-    if not junction("l", "r"):
-        sys.exit()
-    clear()
-    if not junction("l", "r"):
-        sys.exit()
-    clear()
-    if not junction("l", "r"):
-        sys.exit()
-    clear()
-    if not junction("l", "r"):
-        sys.exit()
+    while lives > 0:
+        if not junction("r", "l"):
+            sys.exit()
+        clear()
+
+        if not junction("l", "r"):
+            sys.exit()
+        clear()
+
+        if not junction("l", "r"):
+            sys.exit()
+        clear()
+
+        if not junction("l", "r"):
+            sys.exit()
+        clear()
+
+        if not junction("l", "r"):
+            sys.exit()
+        break
 
 
 if __name__ == "__main__":
