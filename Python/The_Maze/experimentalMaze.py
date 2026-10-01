@@ -26,10 +26,13 @@ def junction(rightChoice: str, wrongChoice: str) -> bool:  # I have a picky form
         )
 
         if choice == rightChoice:
-            t.sleep(1)
+            clear()
+            t.sleep(rand.randint(0, 2))
             print("You have avoided a brutal death, well done!")
             return True
         elif choice == wrongChoice:
+            clear()
+            t.sleep(rand.randint(0, 2))
             print("You have walked down the wrong way and got lost. Try again.")
             lives -= 1
         else:
@@ -40,31 +43,29 @@ def junction(rightChoice: str, wrongChoice: str) -> bool:  # I have a picky form
     return False
 
 
-def clear():
+def clear():  # Clears screen (obvs) but output is assigned to variable presumably because it will return `1` if success (blame formatter)
     _ = subprocess.run("cls||clear", check=False, shell=True)
 
 
 # Main loop run through each choice and exit if False is returned
 def main():
+    clear()
     print("Welcome to the maze!")
 
-    # One junction
+    # All junctions -- if `junction` returns False then exit at that point
+    # TODO: it should break the loop should it not? whoops :/ maybe loop is redundant
     while lives > 0:
         if not junction("r", "l"):
             sys.exit()
-        clear()
 
         if not junction("l", "r"):
             sys.exit()
-        clear()
 
         if not junction("l", "r"):
             sys.exit()
-        clear()
 
         if not junction("r", "l"):
             sys.exit()
-        clear()
         break  # past the last junction
 
     print("You have made it out of the maze!")
