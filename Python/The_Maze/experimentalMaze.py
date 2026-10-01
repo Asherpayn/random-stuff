@@ -57,12 +57,15 @@ def main():
     while lives > 0:
         if not junction("r", "l"):
             sys.exit()
+        print("Passed: 1/4")
 
         if not junction("l", "r"):
             sys.exit()
+        print("Passed: 2/4")
 
         if not junction("l", "r"):
             sys.exit()
+        print("Passed: 3/4")
 
         if not junction("r", "l"):
             sys.exit()
