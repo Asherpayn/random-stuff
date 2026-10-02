@@ -29,12 +29,15 @@ def junction(rightChoice: str, wrongChoice: str) -> bool:  # I have a picky form
             clear()
             t.sleep(rand.randint(0, 2))
             print("You have avoided a brutal death, well done!")
+            t.sleep(1)
             return True
         elif choice == wrongChoice:
             clear()
             t.sleep(rand.randint(0, 2))
-            print("You have walked down the wrong way and got lost. Try again.")
             lives -= 1
+            print(f"You have walked down the wrong way and got lost. Try again. You have {lives} lives left.")
+            t.sleep(1)    
+            clear()      
         else:
             print("Invalid input, failing choice.")
             return False
