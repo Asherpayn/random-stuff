@@ -9,9 +9,25 @@ import time as t
 
 lives = 3
 
+rightChoiceText = [
+    "There is a quiet shift in the wall, you decide to move quickly and have narrowly avoided being crushed by a falling wall.", #0
+    "You walk down the path, everything seems safe for now...", #1
+    "There is a massive crash from above, you manage to dodge it just in time but are left shaken.", #2
+    "The suspense builds...        ...and disappears as nothing happens here.", #3
+    "Phew, you just dodged an arrow shot from somewhere further down the path, you are lucky to be alive." #4
+]
+
+wrongChoiceText = [
+    "You walk down the path... and SPLAT! You are sqished by a falling boulder.", #0
+    "you walk down the path and after a while, you realize you are lost.", #1
+    "", #2
+    "", #3
+    "" #4
+]
+
 
 # One maze junction: ask for R/L spend a life if you chose wrongChoice.
-def junction(rightChoice: str, wrongChoice: str) -> bool:  # I have a picky formatter
+def junction(rightChoice: str, wrongChoice: str) -> bool:  # Picky formatter
 
     global lives
 
