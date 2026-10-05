@@ -52,8 +52,7 @@ def junction(rightChoice: str, wrongChoice: str) -> bool:  # Picky formatter
             t.sleep(rand.randint(0, 2))
             lives -= 1
             print(f"You have walked down the wrong way and got lost. Try again. You have {lives} lives left.")
-            t.sleep(1)    
-            clear()      
+            t.sleep(1)    s      
         else:
             print("Invalid input, failing choice.")
             return False
