@@ -1,7 +1,5 @@
 # the correct path is right, left, left, right
 # Function with the logic for each junction in the maze
-#
-# VERY IMPORTANT NOTICE: This is unfinished/possibly buggy, traitors is on and i forgot :(
 import random as rand
 import subprocess
 import sys
@@ -19,10 +17,10 @@ rightChoiceText = [
 
 wrongChoiceText = [
     "You walk down the path... and SPLAT! You are sqished by a falling boulder.", #0
-    "you walk down the path and after a while, you realize you are lost.", #1
-    "", #2
-    "", #3
-    "" #4
+    "you walk down the path and after seeing a little flicker of light, you realize you are lost.", #1
+    "SMACK!! You are hit by a falling log.", #2
+    "You are caught in a trap and are hung drawn and quartered by the little elves that run the maze.", #3
+    "You fall into a pit and are trapped." #4
 ]
 
 
@@ -41,20 +39,20 @@ def junction(rightChoice: str, wrongChoice: str) -> bool:  # Picky formatter
             .strip()
         )
 
+        clear()
         if choice == rightChoice:
-            clear()
             t.sleep(rand.randint(0, 2))
-            print("You have avoided a brutal death, well done!")
+            print(rightChoiceText[rand.randint(0, 4)])
             t.sleep(1)
             return True
         elif choice == wrongChoice:
-            clear()
             t.sleep(rand.randint(0, 2))
             lives -= 1
-            print(f"You have walked down the wrong way and got lost. Try again. You have {lives} lives left.")
-            t.sleep(1)    s      
+            print(wrongChoiceText[rand.randint(0, 4)])
+            print(f"You have {lives} lives left.")
+            t.sleep(1)
         else:
-            print("Invalid input, failing choice.")
+            print(f"Invalid input, failing choice. You entered \"{choice}\", stick to L or R.")
             return False
 
     print("You have run out of lives. The maze keeps you forever.")
